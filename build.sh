@@ -6,6 +6,8 @@ while read DEFINITION; do
 
   echo "Building VERSION $VERSION php container with tag $TAG"
 
+  docker pull pelso/php-dev:${TAG}
+
   set -x
   docker buildx build \
     --platform linux/amd64,linux/arm64,linux/386 \
