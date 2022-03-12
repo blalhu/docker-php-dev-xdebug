@@ -14,6 +14,9 @@ RUN apt-get update \
 COPY xdebug3.ini /etc/php/${PHP_VERSION}/mods-available/xdebug.ini
 
 USER app
+WORKDIR /home/app/docroot
+
+ENV PHP_VERSION=${PHP_VERSION}
 
 CMD sudo /usr/sbin/service php${PHP_VERSION}-fpm start \
  && sleep infinity
