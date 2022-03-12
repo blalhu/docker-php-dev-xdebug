@@ -3,6 +3,7 @@
 !/LICENSE
 !/README.md
 !/Dockerfile
+!/xdebug2.ini
 !/xdebug3.ini
 !/build.sh
 !/build_manifest.txt
