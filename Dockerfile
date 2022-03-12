@@ -1,11 +1,19 @@
-FROM pelso/php-dev:8.0
+ARG DOCKER_TAG
+
+FROM pelso/php-dev:${DOCKER_TAG}
+
+ARG DOCKER_TAG
+ARG PHP_VERSION
+
+USER root
 
 RUN apt-get update \
  && apt-get install -y \
-    php8.0-xdebug
+    php${PHP_VERSION}-xdebug
 
-COPY xdebug.ini /etc/php/8.0/mods-available/xdebug.ini
+COPY xdebug3.ini /etc/php/${PHP_VERSION}/mods-available/xdebug.ini
 
-CMD service php8.0-fpm start \
- && service php8.0-fpm restart \
+USER app
+
+CMD sudo /usr/sbin/service php${PHP_VERSION}-fpm start \
  && sleep infinity
